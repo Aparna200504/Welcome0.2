@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome App 0.2 By Aparna</title>
+    <style>
+        * { font-size: 30px; font-family: calibri;}
+        body { background-color: azure; }
+        h1 {background-color:rgb(91, 113, 113); color: white; width:450px ; border-radius: 30px; padding-block: 6px;}
+        .input::placeholder {font-size: 15px; color: gray; font-family: arial;}
+        .submit{background-color: rgb(193, 241, 241);color: rgb(6, 12, 10); border-radius: 10px;}
+        .submit:hover{background-color: rgba(85, 226, 120, 0.573);color: rgb(0, 0, 0); border-radius: 10px;}
+    </style>
+</head>
+
+<body>
+    <center>
+        
+	<h1>Welcome App</h1>
+    <form onsubmit="show()">
+        <br>
+        <input type="text" placeholder="Enter your name here . . ." id="name" class="input" />
+        <br><br>
+        <input type="submit" class="submit" />
+    </form>
+    <h2 id="msg"></h2>
+	<script>
+		function show() {
+            event.preventDefault(); // Prevents form submission
+            let name = document.getElementById("name");
+            let msg = document.getElementById("msg");
+
+            if (name.value ==""){
+                alert("Name cannot be blank ");
+                msg.innerHTML="";
+                name.focus();
+                return;
+            }
+
+            if (name.value.trim() ==""){
+                alert("Name cannot be blank spaces ");
+                msg.innerHTML="";
+                name.value="";
+                name.focus();
+                return;
+            }
+            if (! name.value.match(/^[A-Za-z ]+$/)){
+                alert("Name  should be only alphabets");
+                msg.innerHTML="";
+                name.value="";
+                name.focus();
+                return;
+            }
+
+            let d = new Date();
+            let hr = d.getHours();
+            let res = "";
+
+            if (hr < 12)
+                res = "Good Morning, " + name.value;
+            else if (hr < 16)
+                res = "Good Afternoon, " + name.value;
+            else
+                res = "Good Evening, " + name.value;
+
+            msg.innerHTML = res;
+        }
+	</script>
+</body>
+</html>
